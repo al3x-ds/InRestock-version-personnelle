@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choisi ton produit !{% endblock %}
+
+{% block body %}
+
+  <h1>Liste des produits</h1>
+  
+  <div class="card-deck">
+    {% for product in products %}
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <a href="{{ path('product_show', { 'slug' : product.slug }) }}" class="btn btn-primary">Aller au produit</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+    
+{% endblock %}

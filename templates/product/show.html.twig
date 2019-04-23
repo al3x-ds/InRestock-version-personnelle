@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choisi ton produit !{% endblock %}
+
+{% block body %}
+
+    <h1> {{ product.name }} </h1>
+    <p>Stock : 15</p>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" id="js-minus">-</button>
+        <input type="number" value="0" class="mx-2" id="js-input" />
+        <button type="button" class="btn btn-secondary" id="js-plus">+</button>
+        
+        <button 
+            type="button" 
+            class="btn btn-success ml-2" 
+            id="js-valid" 
+            data-product="{{product ? product.id|json_encode|e('html_attr')}}"
+            data-user="{{ app.user ? app.user.id|json_encode|e('html_attr') }}">
+            Valider
+        </button>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{asset('js/modification.js' ) }}"></script>
+{% endblock %}

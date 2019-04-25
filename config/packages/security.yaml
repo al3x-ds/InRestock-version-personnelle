@@ -17,6 +17,16 @@ security:
         main:
             anonymous: true
 
+            form_login: 
+                login_path: security_login
+                check_path: security_login
+                default_target_path: product               
+                
+            logout:
+                path: security_logout
+                target: security_login
+            provider: app_user_provider
+
             # activate different ways to authenticate
 
             # http_basic: true

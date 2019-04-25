@@ -4,27 +4,31 @@
 
 {% block body %}
 
-    <h1> {{ product.name }} </h1>
-    <p>Stock : 15</p>
+<h1> {{ product.name }} </h1>
+{% if product.stock == null %}
+<p>Pas de stock</p>
+{% else %}
+<p>Stock : <span id="js-stock">{{product.stock.stock}}</span></p>
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" id="js-minus">-</button>
-        <input type="number" value="0" class="mx-2" id="js-input" />
-        <button type="button" class="btn btn-secondary" id="js-plus">+</button>
-        
-        <button 
-            type="button" 
-            class="btn btn-success ml-2" 
-            id="js-valid" 
-            data-product="{{product ? product.id|json_encode|e('html_attr')}}"
-            data-user="{{ app.user ? app.user.id|json_encode|e('html_attr') }}">
-            Valider
-        </button>
-    </div>
+
+
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" id="js-minus">-</button>
+    <input type="number" value="0" class="mx-2" id="js-input" />
+    <button type="button" class="btn btn-secondary" id="js-plus">+</button>
+
+    <button type="button" class="btn btn-success ml-2" id="js-valid"
+        data-product="{{product ? product.id|json_encode|e('html_attr')}}"
+        data-user="{{ app.user ? app.user.id|json_encode|e('html_attr') }}">
+        Valider
+    </button>
+</div>
+{% endif %}
 
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="{{asset('js/modification.js' ) }}"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{{asset('js/modification.js' ) }}"></script>
 {% endblock %}

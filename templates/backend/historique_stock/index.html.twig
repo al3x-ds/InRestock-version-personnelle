@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mouvements en stock{% endblock %}
+
+{% block body %}
+
+<h1>Liste des mouvements en stock</h1>
+
+<div class="table__wrapper">
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Produit', 'h.product') }}<i
+                        class="fas fa-sort"></i>
+                </th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Variation', 'h.variation') }}<i
+                        class="fas fa-sort"></i></th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Employé', 'h.user') }}<i
+                        class="fas fa-sort"></i></th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Stock', 'h.newStock') }}<i
+                        class="fas fa-sort"></i>
+                </th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Date-heure', 'h.createdAt') }}<i
+                        class="fas fa-sort"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movement in historiqueStock %}
+            <tr>
+                <td>{{ movement.product }}</td>
+                <td>{{ movement.variation }}</td>
+                <td>{{ movement.user}}</td>
+                <td>{{ movement.newStock}}</td>
+                <td>{{ movement.createdAt|date('d-m-Y H:i') }}</td>
+
+            </tr>
+            {% else %}
+            <tr>
+                <td>Aucun historique trouvé !</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="navigation">
+    {{ knp_pagination_render(historiqueStock, null, {}, {
+
+    }) }}
+
+</div>
+
+{% endblock %}

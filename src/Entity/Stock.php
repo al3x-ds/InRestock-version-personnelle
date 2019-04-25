@@ -21,6 +21,12 @@ class Stock
      */
     private $stock;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Product", mappedBy="stock", cascade={"persist"})
+     */
+    private $product;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +40,24 @@ class Stock
     public function setStock(int $stock): self
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newStock = $product === null ? null : $this;
+        if ($newStock !== $product->getStock()) {
+            $product->setStock($newStock);
+        }
 
         return $this;
     }

@@ -4,17 +4,42 @@
 
 {% block body %}
 
-  <h1>Liste des produits</h1>
-  
-  <div class="card-deck">
-    {% for product in products %}
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{product.name}}</h5>
-          <a href="{{ path('product_show', { 'slug' : product.slug }) }}" class="btn btn-primary">Aller au produit</a>
-        </div>
-      </div>
-    {% endfor %}
+<h1>Liste des produits</h1>
+
+{{ form_start(form) }}
+<div class="form-row">
+  <div class="col-10">
+    {{form_rest(form)}}
   </div>
-    
+  <div class="col-2">
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Rechercher</button>
+    </div>
+  </div>
+</div>
+{{ form_end(form) }}
+
+<hr>
+
+
+<div class="row">
+  {% for product in products %}
+  <div class="col-sm-2 col-md- col-lg-4 mb-4">
+    <div class="card text-white bg-dark">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <a href="{{ path('product_show', { 'slug' : product.slug }) }}" class="btn btn-light">Aller au produit</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="navigation mt-4">
+  {{ knp_pagination_render(products, null, {}, {
+
+    }) }}
+
+</div>
+
 {% endblock %}

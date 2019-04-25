@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Product;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\ProductSearch;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,26 @@ class ProductRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Product::class);
+    }
+
+    public function findSearch(ProductSearch $search) 
+    {
+        $query = $this->createQueryBuilder('p');
+
+        $name = $search->getName();
+
+        /** Si des caractères sont renseigné, alors je filtre les resultat
+        * Exemple : l'utilisteur rentre le mot "mac", le repository filtera tout les elements
+        * qui on les caractères "mac" dans leur nom. 
+        * Dans le cas où rien n'est renseigné, le repository renverra tout les elements
+        */ 
+
+        if ($name) {
+            $query->where('p.name LIKE :name')
+                  ->setParameter('name', '%'.$name.'%');
+        }
+
+        return $query->getQuery();
     }
 
     // /**

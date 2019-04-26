@@ -1,0 +1,17 @@
+{% extends 'backend/backend.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+
+<h1>Nouveau stock</h1>
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{{form_widget(form)}}
+
+<button class="btn btn-success" type="submit">New</button>
+
+{{form_end(form)}}
+
+{% endblock %}

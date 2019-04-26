@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/products", name="product")
+     * @Route("/products", name="product_index")
      */
     public function index(ProductRepository $productRepo, Request $request, PaginatorInterface $paginator)
     {

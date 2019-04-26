@@ -1,0 +1,17 @@
+{% extends "backend/backend.html.twig" %}
+
+{% block body %}
+
+<h1>Modifier le stock du produit {{product.name }}</h1>
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+{{ form_widget(form) }}
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button type="submit" class="btn btn-primary mr-2">Modifier</button>
+    <a href="{{ path('backend_stock_delete' , {'id' : product.id }) }}" class="btn btn-danger">Supprimer</a>
+</div>
+
+{{ form_end(form) }}
+
+{% endblock %}

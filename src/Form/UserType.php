@@ -14,12 +14,18 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class UserType extends AbstractType
 {
+
+    
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('email', EmailType::class, [
                 'label' => 'Adresse mail'
                 ])
+            ->add('username', TextType::class, [
+                'label' => 'Nom d\'utilisateur'
+            ])
             ->add('name', TextType::class, [
                 'label' => 'Nom',  
                 ])

@@ -1,0 +1,31 @@
+{% extends "backend/backend.html.twig" %}
+
+{% block body %}
+<h1> {{ product.name }} </h1>
+
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+{{ form_widget(form) }}
+{% if product.stock %}
+<h4>Stock du produit : {{ product.stock.stock }}</h4>
+{% else %}
+<h4>Pas de stock</h4>
+{% endif %}
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button type="submit" class="btn btn-success mr-2">Modifier</button>
+
+    {% if product.stock %}
+    <a class="btn btn-primary mr-2" href="{{ path('backend_stock_edit', {'id': product.stock.id} ) }}">
+        Gérer le stock du produit
+    </a>
+    {% else %}
+    <a href="{{ path('backend_product_stock', { 'slug' : product.slug } ) }}" class="btn btn-primary mr-2">Créer le
+        stock</a>
+    {% endif %}
+    <a href="{{ path('backend_product_delete' , {'id' : product.id}) }}" class="btn btn-danger">Supprimer</a>
+</div>
+
+
+{{ form_end(form) }}
+
+{% endblock %}

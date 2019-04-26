@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'backend/backend.html.twig' %}
 
 {% block title %}Liste des produits{% endblock %}
 
@@ -25,15 +25,24 @@
                     <td>{{ product.name }}</td>
                     {% if product.stock == null %}
                     <td>Pas de stock
-                        <a href="" class="text-success"><i class="fas fa-plus-circle"></i></a>
+                        <a href="{{ path('backend_product_stock', { 'slug' : product.slug } ) }}"
+                            class="text-success"><i class="fas fa-plus-circle"></i></a>
                     </td>
 
                     {% else %}
                     <td>{{ product.stock.stock }}</td>
                     {% endif %}
                     <td>
-                        <a href="" class="text-primary"><i class="fas fa-edit"></i></a>
-                        <a href="" class="text-danger"><i class="fas fa-trash"></i></a>
+                        <div class="btn-group">
+                            <a href="{{ path('backend_product_edit', {'slug' : product.slug }) }}"
+                                class="btn btn-primary mr-2">Modifier</a>
+                            <form method="post" action="{{ path('backend_product_delete', {'id': product.id}) }}"
+                                onsubmit="return confirm('Etes-vous sûr(e) de vouloir supprimer ce produit?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                                <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </div>
 
                     </td>
                 </tr>
@@ -48,7 +57,7 @@
 
         {{form_widget(form)}}
 
-        <button class="btn btn-success" type="submit">New</button>
+        <button class="btn btn-success" type="submit">Ajouter un produit</button>
 
         {{form_end(form)}}
 

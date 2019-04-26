@@ -30,7 +30,7 @@ class Product
     private $slug;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Stock", inversedBy="product", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Stock", mappedBy="product", cascade={"persist", "remove"})
      */
     private $stock;
 
@@ -68,11 +68,14 @@ class Product
     {
         return $this->stock;
     }
-
     public function setStock(?Stock $stock): self
     {
         $this->stock = $stock;
-
+        // set (or unset) the owning side of the relation if necessary
+        $newProduct = $stock === null ? null : $this;
+        if ($newProduct !== $stock->getProduct()) {
+            $stock->setProduct($newProduct);
+        }
         return $this;
     }
 

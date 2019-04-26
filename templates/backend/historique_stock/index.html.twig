@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'backend/backend.html.twig' %}
 
 {% block title %}Mouvements en stock{% endblock %}
 
@@ -10,18 +10,11 @@
     <table class="table table-dark table-hover">
         <thead>
             <tr>
-                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Produit', 'h.product') }}<i
-                        class="fas fa-sort"></i>
-                </th>
-                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Variation', 'h.variation') }}<i
-                        class="fas fa-sort"></i></th>
-                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Employé', 'h.user') }}<i
-                        class="fas fa-sort"></i></th>
-                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Stock', 'h.newStock') }}<i
-                        class="fas fa-sort"></i>
-                </th>
-                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Date-heure', 'h.createdAt') }}<i
-                        class="fas fa-sort"></i></th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Produit', 'h.product') }}</th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Variation', 'h.variation') }}</th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Employé', 'h.user') }}</th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Stock', 'h.newStock') }}</th>
+                <th scope="col">{{ knp_pagination_sortable(historiqueStock, 'Date-heure', 'h.createdAt') }}</th>
             </tr>
         </thead>
         <tbody>

@@ -21,7 +21,7 @@ Une simple liste avec une barre de recherche est maintenant disponible dès la c
 
 Cette barre de recherche va venir regarder si les caractères présents sont rentré dans l'input, pour ne pas obligé l'utilisateur a rentré exactement le nom.
 
-Exemple : En écrivant "iPhone", la fonction va venir regarder tout les produits avec ce mot, il va ainsi renvoyé tout les iphone (6, 7, 8,etc..)
+Exemple : En écrivant "iPhone", la fonction va venir regarder tout les produits avec ce mot, il va ainsi renvoyé tout les iphone (6, 7, 8,etc..).   
 Un système de pagination a également été intégré.
 
 L'interaction sur la page produit est la même, un input number avec deux boutons (+ e -) ainsi qu'un bouton de validation. Cette fonction fonctionne avec AJAX pour avoir un résultat instantané sans rechargements.

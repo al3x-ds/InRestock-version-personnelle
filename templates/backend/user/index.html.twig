@@ -6,39 +6,44 @@
 <h1>Liste des utilisateur</h1>
 
 <div class="row">
-    <div class="col-sm-8">
-        <table class="table table-dark table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nom</th>
-                    <th scope="col">Nom d'utilisateur</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Actions</th>
+    <div class="col-lg-8 col-md-8 col-sm-4">
+        <div class="table__wrapper">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Nom d'utilisateur</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Actions</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                <tr>
-                    <th scope="row">{{ user.id }}</th>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.role.name }}</td>
-                    <td>
-                        <a href="" class="text-primary"><i class="fas fa-edit"></i></a>
-                        <a href="" class="text-danger"><i class="fas fa-trash"></i></a>
-
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.role.name }}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ path('backend_user_edit', {'id' : user.id } ) }}"
+                                    class="btn btn-primary mr-2">Modifier</a>
+                                <a href="{{ path('backend_user_delete', {'id' : user.id } ) }}"
+                                    class="btn btn-danger">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-lg-4 col-md-4 col-sm-8">
 
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
@@ -48,7 +53,7 @@
         {{ form_row(form.password) }}
         {{form_row(form.role)}}
 
-        <button class="btn btn-success" type="submit">Nouveau</button>
+        <button class="btn btn-success" type="submit">Ajouter</button>
 
         {{form_end(form)}}
 

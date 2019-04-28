@@ -5,6 +5,23 @@ Je trouvais l'ancienne version un peu "lourde" en intéraction, trop d'actions �
 
 Ce projet est réalisé avec le framework Symfony et inclus du Javascript.
 
+## Instalation 
+
+J'ai crée fixtures permettant de géneré des utilisateurs et des produits. 
+
+### Utilisateurs : 
+username = admin, password = admin   
+username = user, password = user
+
+
+- ``` git clone ``` 
+- ``` cd AlexProject ``` 
+- ``` composer install ``` -- installation des dépendances du projets
+- ``` modifier vos informations de connexion BDD dans le fichier .env ```
+- ``` php bin/console doctrine:database:create ``` -- Commande permettant de crée la base de données
+- ``` php bin/console fixtures:load ``` -- permet de charger les données de tests
+- ``` php bin/console server:run ``` -- Lancer le serveur de Symfony 
+
 ## En géneral 
 
 J'ai retirer certains fonctionnement : 
@@ -33,21 +50,6 @@ Les utilisateurs ont beaucoup moins d'informations, finalement le besoin n'est p
 
 Il ne me reste plus qu'a augmenté les performances du site la où celà est possible, avec nottament AJAX.
 
-## Instalation 
 
-J'ai crée fixtures permettant de géneré des utilisateurs et des produits. 
-
-### Utilisateurs : 
-username = admin, password = admin   
-username = user, password = user
-
-
-- ``` git clone ``` 
-- ``` cd AlexProject ``` 
-- ``` composer install ``` -- installation des dépendances du projets
-- ``` modifier vos informations de connexion BDD dans le fichier .env ```
-- ``` php bin/console doctrine:database:create ``` -- Commande permettant de crée la base de données
-- ``` php bin/console fixtures:load ``` -- permet de charger les données de tests
-- ``` php bin/console server:run ``` -- Lancer le serveur de Symfony 
 
 

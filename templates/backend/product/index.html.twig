@@ -8,47 +8,49 @@
 
 <div class="row">
     <div class="col-sm-8">
-        <table class="table table-dark table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nom du produit</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Actions</th>
+        <div class="table__wrapper">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom du produit</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Actions</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in products %}
-                <tr>
-                    <th scope="row">{{ product.id }}</th>
-                    <td>{{ product.name }}</td>
-                    {% if product.stock == null %}
-                    <td>Pas de stock
-                        <a href="{{ path('backend_product_stock', { 'slug' : product.slug } ) }}"
-                            class="text-success"><i class="fas fa-plus-circle"></i></a>
-                    </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <th scope="row">{{ product.id }}</th>
+                        <td>{{ product.name }}</td>
+                        {% if product.stock == null %}
+                        <td>Pas de stock
+                            <a href="{{ path('backend_product_stock', { 'slug' : product.slug } ) }}"
+                                class="text-success"><i class="fas fa-plus-circle"></i></a>
+                        </td>
 
-                    {% else %}
-                    <td>{{ product.stock.stock }}</td>
-                    {% endif %}
-                    <td>
-                        <div class="btn-group">
-                            <a href="{{ path('backend_product_edit', {'slug' : product.slug }) }}"
-                                class="btn btn-primary mr-2">Modifier</a>
-                            <form method="post" action="{{ path('backend_product_delete', {'id': product.id}) }}"
-                                onsubmit="return confirm('Etes-vous sûr(e) de vouloir supprimer ce produit?');">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
-                                <button class="btn btn-danger">Supprimer</button>
-                            </form>
-                        </div>
+                        {% else %}
+                        <td>{{ product.stock.stock }}</td>
+                        {% endif %}
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ path('backend_product_edit', {'slug' : product.slug }) }}"
+                                    class="btn btn-primary mr-2">Modifier</a>
+                                <form method="post" action="{{ path('backend_product_delete', {'id': product.id}) }}"
+                                    onsubmit="return confirm('Etes-vous sûr(e) de vouloir supprimer ce produit?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                                    <button class="btn btn-danger">Supprimer</button>
+                                </form>
+                            </div>
 
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="col-sm-4">

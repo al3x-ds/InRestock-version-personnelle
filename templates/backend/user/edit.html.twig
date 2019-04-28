@@ -1,0 +1,23 @@
+{% extends 'backend/backend.html.twig' %}
+
+{% block title %}Modifier l'utilisateur {{user.username}}{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{{form_row(form.email)}}
+{{form_row(form.username)}}
+{{form_row(form.name)}}
+{{form_row(form.password)}}
+{{form_row(form.role)}}
+
+<button class="btn btn-success" type="submit">Modifier</button>
+<a class="btn btn-danger ml-2" href="{{path('backend_user_delete', {"id" : user.id} ) }}"> Supprimer</a>
+
+{{form_end(form)}}
+
+
+
+
+{% endblock %}

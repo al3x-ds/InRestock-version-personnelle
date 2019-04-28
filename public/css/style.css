@@ -1,3 +1,8 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+.table__wrapper {
+    overflow-x: auto;
+    width: 100%;
+}

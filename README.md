@@ -1,4 +1,4 @@
-# InRestock - Version Alex
+# InRestock - Projet de fin de formation oClock - Version Alex
 
 J'ai décidé de refaire ce projet à ma façon tout en récuperant la majorité des élements.
 Je trouvais l'ancienne version un peu "lourde" en intéraction, trop d'actions étaient nécessaires à l'utilisateur, cela allait limite a l'encontre du but du projet.

@@ -34,6 +34,8 @@ class UserController extends AbstractController
             $newUser->setPassword($hash);
             $entityManager->persist($newUser);
             $entityManager->flush();
+            $this->addFlash('success', 'L\'utilisateur '.$newUser->getName().' a été crée. ');
+
             return $this->redirectToRoute('backend_user_index');
         }
 
@@ -62,6 +64,7 @@ class UserController extends AbstractController
         $user->setPassword($encodedPassword);    
         $em->persist($user);
         $em->flush();
+        $this->addFlash('success', 'L\'utilisateur '.$user->getName().' a été modifier. ');
         return $this->redirectToRoute('backend_user_index');
         }
  
@@ -79,6 +82,8 @@ class UserController extends AbstractController
         // delete de l'user choisi
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($user);
+        $this->addFlash('danger', 'L\'utilisateur '.$user->getName().' a été supprimer. ');
+
         $entityManager->flush();
             
        return $this->redirectToRoute('backend_user_index');

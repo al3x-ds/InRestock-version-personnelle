@@ -1,9 +1,21 @@
 {% extends 'backend/backend.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Liste des utilisateurs{% endblock %}
 
 {% block body %}
-<h1>Liste des utilisateur</h1>
+<h1>Liste des utilisateurs</h1>
+
+{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+{% endfor %}
+
+{% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+{% endfor %}
 
 <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-4">

@@ -37,6 +37,8 @@ class ProductController extends AbstractController
             
             $em->persist($newProduct);
             $em->flush();
+            $this->addFlash('success', 'Le produit : '.$newProduct->getName().' a été crée. ');
+
             return $this->redirectToRoute('backend_product_index');
         }
 
@@ -56,6 +58,7 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Le produit : '.$product->getName().' a été modifier. ');
             return $this->redirectToRoute('backend_product_index', [
 
             ]);
@@ -75,10 +78,14 @@ class ProductController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
             $entityManager->flush();
+            $this->addFlash('danger', 'Le produit : '.$product->getName().' est supprimé. ');
+            return $this->redirectToRoute('backend_product_index');
         }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($product);
             $entityManager->flush();
+            $this->addFlash('danger', 'Le produit : '.$product->getName().' est supprimé.');
             
         return $this->redirectToRoute('backend_product_index');
     }
@@ -100,6 +107,8 @@ class ProductController extends AbstractController
             $stock->setProduct($product);
             $entityManager->persist($stock);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Le stock a été crée pour le produit : '.$product->getName().'. ');
             
             return $this->redirectToRoute('backend_product_index', [
             ]);
@@ -123,8 +132,9 @@ class ProductController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            
-            $productId = $stock->getProduct()->getId();
+
+            $this->addFlash('success', 'Le stock a été modifier pour le produit : '.$product->getName().'. ');
+
             return $this->redirectToRoute('backend_product_index', [
 
             ]);
@@ -140,12 +150,13 @@ class ProductController extends AbstractController
      */
     public function stockDelete(Request $request, Stock $stock)
     {
-        if ($this->isCsrfTokenValid('delete'.$stock->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($stock);
             $entityManager->flush();
-        }
-        $productId = $stock->getProduct()->getId();
+
+        $product = $stock->getProduct();
+        $this->addFlash('danger', 'Le stock a été supprimer pour le produit : '.$product->getName().'. ');
+
         return $this->redirectToRoute('backend_product_index', [
         ]);
     }

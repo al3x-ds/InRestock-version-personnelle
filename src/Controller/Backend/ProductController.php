@@ -7,6 +7,7 @@ use App\Entity\Product;
 use App\Form\StockType;
 use App\Form\ProductType;
 use Cocur\Slugify\Slugify;
+use App\Repository\RoleRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,11 +23,13 @@ class ProductController extends AbstractController
     /**
      * @Route("/products", name="product_index")
      */
-    public function productIndex(ProductRepository $pRepo, Request $request, EntityManagerInterface $em)
+    public function productIndex(ProductRepository $pRepo, Request $request, EntityManagerInterface $em, RoleRepository $roleRepo)
     {
         $products = $pRepo->findAll();
         $newProduct = new Product();
         $form = $this->createForm(ProductType::class, $newProduct); 
+        $role = $roleRepo->findAll();
+        dump($role);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){

@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
 
         for ($i=0; $i < 5 ; $i++) { 
             $product = new Product();
-            $product->setName('Product'.$i.'');
+            $product->setName('iPhone '.$i.'');
             
             $slugify = new Slugify();
             $slug = $slugify->slugify($product->getName());
@@ -39,6 +39,19 @@ class AppFixtures extends Fixture
             $stock->setStock(15);
             $stock->setProduct($product);
             $em->persist($stock);
+
+            $product2 = new Product();
+            $product2->setName('Samsung Galaxy S'.$i.'');
+            
+            $slugify = new Slugify();
+            $slug = $slugify->slugify($product2->getName());
+            $product2->setSlug($slug);
+            $em->persist($product2);
+
+            $stock2 = new Stock();
+            $stock2->setStock(15);
+            $stock2->setProduct($product2);
+            $em->persist($stock2);
         }
 
         $roleAdmin = new Role();

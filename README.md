@@ -3,7 +3,16 @@
 J'ai décidé de refaire ce projet à ma façon tout en récupérant la majorité des élements.
 Je trouvais l'ancienne version un peu "lourde" en intéractions, trop d'actions étaient nécessaires à l'utilisateur, cela allait limite a l'encontre du but du projet.
 
-Ce projet est réalisé avec le framework Symfony et inclus du Javascript.
+Ce projet à été réalisé en 1 mois avec le framework Symfony et inclus du Javascript. 
+Initialement ce projêt devait servir d'API pour un front en React, à cause de soucis dans l'équipe il a du être fait avec seulement avec Symfony.
+Je pense continuer et améliorer ce projet lorsque j'aurais plus de temps.
+
+## Présentation
+
+InRestock est une application permettant de gerer les stocks d'une entreprise.
+- Les administrateurs de l'entreprise ont accès à un CRUD complet des produits et des utilisateurs mais aussi à un historique des actions qui leur permet de garder un oeil sur les actions effectués par leurs employés ou eux même.
+- Les utilisateurs peuvent choisir un produit et appliqué une modifications positive ou négative sur celui-ci, Le produit est mis à jour en temp réel et une nouvelle ligne est crée dans l'historique des actions. 
+
 
 ## Instalation 
 

@@ -5,7 +5,8 @@ Je trouvais l'ancienne version un peu "lourde" en intéractions, trop d'actions 
 
 Ce projet à été réalisé en 1 mois avec le framework Symfony et inclus du Javascript. 
 Initialement ce projêt devait servir d'API pour un front en React, à cause de soucis dans l'équipe il a du être fait avec seulement avec Symfony.
-Je pense continuer et améliorer ce projet lorsque j'aurais plus de temps.
+
+Je pense continuer et améliorer ce projet lorsque j'aurais plus de temps afin de mettre en application les compétences que j'ai acquise mais aussi pour continuer à me former sur d'autres stack, Je pense utilisé React ou VueJS pour l'UI et Symfony pour le back-office et si possible dockeriser l'application.
 
 ## Présentation
 
